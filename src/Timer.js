@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 const BackGround=styled.div`
     width: 100%;
@@ -24,29 +24,87 @@ const BackGround=styled.div`
         100%{background-position:0% 50%}
     }
 `;
-export default function Timer(){
-    const [hour, setHour] = useState(padNumber(now.getHours(), 2));
-    const [min, setMin] = useState(padNumber(now.getMinutes(), 2));
-    const [sec, setSec] = useState(padNumber(now.getSeconds(), 2));
-    const interval = useRef(null);
-    let now = new Date();
-    const padNumber = (num, length) => {
-        return String(num).padStart(length, '0');
-    };
 
-    useEffect(() => {
-       interval.current = setInterval(() => {
-        now = new Date();
-        setHour(padNumber(now.getHours(), 2));
-        setMin(padNumber(now.getMinutes(), 2));
-        setSec(padNumber(now.getSeconds(), 2));
-    }, 1000);
-    // clean-up 함수 리턴!
-        return () => clearInterval(interval.current);
-    }, []);
+const WhiterBar=styled.div`
+    height:500px;
+    width:750px;
+    background-color:white;
+    border-radius:1.2rem;
+    margin:50px auto;
+    text-align:center;
+`;
+
+const TextSet=styled.div`
+    margin-top:120px;
+`;
+
+const Font=styled.div`
+    font-size:150px;
+    font-weight:bold;
+`;
+
+const Btn=styled.button`
+    margin-right:15px;
+    display:inline-block;
+`;
+export default function Timer(){
+    const useCounter = (initialValue, ms) => {
+        const [count, setCount] = useState(initialValue);
+        const intervalRef = useRef(null);
+        const start = useCallback(() => {
+            if (intervalRef.current !== null) {
+                return;
+            }
+            intervalRef.current = setInterval(() => {
+                setCount(c => c + 1);
+            }, ms);
+        }, []);
+        const stop = useCallback(() => {
+            if (intervalRef.current === null) {
+                return;
+            }
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }, []);
+        const reset = useCallback(() => {
+            setCount(0);
+            stop()
+        }, []);
+        return { count, start, stop, reset };
+    }
+    const [currentHours, setCurrentHours] = useState(0);
+    const [currentMinutes, setCurrentMinutes] = useState(0);
+    const [currentSeconds, setCurrentSeconds] = useState(0);
+    const { count, start, stop, reset } = useCounter(0, 1000);
+
+	// 타이머 기능
+    const timer = () => {
+        const checkMinutes = Math.floor(count / 60);
+        const hours = Math.floor(count / 3600);
+        const minutes = checkMinutes % 60;
+        const seconds = count % 60;
+        setCurrentHours(hours)
+        setCurrentSeconds(seconds)
+        setCurrentMinutes(minutes)
+    }
+
+    useEffect(timer, [count]);
+
     return(
         <BackGround>
-            <div> {hour} : {min} : {sec}</div>
+            <WhiterBar> 
+                <TextSet>
+                    <Font>
+                        {currentHours < 10 ? `0${currentHours}` : currentHours}:{
+                        currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}:{
+                        currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}
+                    </Font>
+
+                    <Btn onClick={start}>Start</Btn>
+                    <Btn onClick={stop}>Stop</Btn>
+                    <Btn onClick={reset}>Reset</Btn>
+                </TextSet>
+            </WhiterBar>
         </BackGround>
     )
 }
