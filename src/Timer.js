@@ -30,6 +30,7 @@ const WhiterBar=styled.div`
     align-items:center;
     height:500px;
     width:800px;
+    
     background-color:white;
     border-radius:1.2rem;
     margin:50px auto;
@@ -102,9 +103,9 @@ export default function Timer(){
                         currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}
                     </Font>
 
-                    <Btn onClick={start} className='btn-2'>Start</Btn>
-                    <Btn onClick={stop} className='btn-2'>Stop</Btn>
-                    <Btn onClick={reset} className='btn-2'>Reset</Btn>
+                    <Btn onClick={start}>Start</Btn>
+                    <Btn onClick={stop}>Stop</Btn>
+                    <Btn onClick={reset}>Reset</Btn>
                 </TextSet>
             </WhiterBar>
         </BackGround>
