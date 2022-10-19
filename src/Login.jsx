@@ -72,7 +72,7 @@ const IdDesign = styled.input`
   &:hover::-webkit-input-placeholder,
   &:focus::-webkit-input-placeholder{
   opacity: 0;
-    }
+  }
 `;
 const Border1 = styled.div`
   border-bottom: 3px solid black;
@@ -175,7 +175,7 @@ export default function Login() {
             <Border1 />
             <div><PasswordDesign type="password" placeholder="Enter your password" name='input_pw' value={input2} onChange={Password_onchange}/></div>
             <Border2 />
-            <LoginBtn onClick={onClick}>로그인</LoginBtn>
+            <LoginBtn type="submit" onClick={onClick}>로그인</LoginBtn>
           </IdPass>
         </WhiteBar>
       </Bg>
