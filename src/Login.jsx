@@ -79,9 +79,6 @@ const Border1 = styled.div`
   width: 55%;
   position: relative;
   left: 150px;
-  &:hover{
-    border-bottom: 3px solid ;
-  }
 `;
 
 const Border2 = styled.div`
@@ -89,9 +86,6 @@ const Border2 = styled.div`
   width: 55%;
   position: relative;
   left: 150px;
-  &:hover{
-    border-bottom: 3px solid 
-  }
 `;
 const PasswordDesign = styled.input`
   font-family: "work sans";
