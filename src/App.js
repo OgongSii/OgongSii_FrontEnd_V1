@@ -4,12 +4,6 @@ import Timer from './Timer';
 import Login from './Login';
 import Join from './Join';
 function App() {
-  const screenSize = {
-    desktop: {
-      minWidth: 1025,
-      maxWidth: 2500,
-    },
-  };
   return (
     <div>
         <BrowserRouter>

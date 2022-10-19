@@ -39,6 +39,10 @@ const WhiteBar = styled.div`
   border-radius: 1.2rem;
   align-items: center;
   justify-items: center;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
 `;
 const Title = styled.div`
   font-weight: bold;
@@ -54,7 +58,7 @@ const IdPass = styled.div`
 const IdDesign = styled.input`
   color: black;
   outline: none;
-  border: none;
+  border:none;
   position: relative;
   left: 170px;
   margin: 70px 0 15px 0;
@@ -68,20 +72,26 @@ const IdDesign = styled.input`
   &:hover::-webkit-input-placeholder,
   &:focus::-webkit-input-placeholder{
   opacity: 0;
-  }
+    }
 `;
 const Border1 = styled.div`
-  border-bottom: 3px solid gray;
+  border-bottom: 3px solid black;
   width: 55%;
   position: relative;
   left: 150px;
+  &:hover{
+    border-bottom: 3px solid ;
+  }
 `;
 
 const Border2 = styled.div`
-  border-bottom: 3px solid gray;
+  border-bottom: 3px solid black;
   width: 55%;
   position: relative;
   left: 150px;
+  &:hover{
+    border-bottom: 3px solid 
+  }
 `;
 const PasswordDesign = styled.input`
   font-family: "work sans";
@@ -119,13 +129,16 @@ const LoginBtn = styled.button`
   font-family: "work sans";
   background-repeat: no-repeat;
   background-size: 300% 300%;
-  background-image: linear-gradient(
-    -45deg,
-    #3be35f 0%,
-    rgba(87, 111, 230, 1) 25%,
-    #57e1e6 51%,
-    #70e33b 100%
-  );
+  background-image: linear-gradient(450deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000);
   animation: AnimateBG 20s ease infinite;
 
   @keyframes AnimateBG {
