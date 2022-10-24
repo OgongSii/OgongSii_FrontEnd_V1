@@ -153,27 +153,28 @@ export default function Login() {
 
   const Id_onchange=useCallback(e=>{
     SetInput1(e.target.value);
-  },[]);
+  },[input1]);
 
   const Password_onchange=useCallback(e=>{
     SetInput2(e.target.value);
-  },[]);
+  },[input2]);
 
-  const onClick=()=>{
+  const onClick=useCallback(e=>{
     if(input1&&input2){
-        SetInput1('');
-        SetInput2('');
+      
+      SetInput1('');
+      SetInput2('');
     }
-  }
+  },[input1,input2]);
   return (
     <div>
       <Bg>
         <WhiteBar>
           <IdPass>
             <Title>로그인</Title>
-            <div><IdDesign type="text" placeholder="Enter your name" name='input_id' value={input1} onChange={Id_onchange}/></div>
+            <div><IdDesign type="text" placeholder="Enter your name" name='username' value={input1} onChange={Id_onchange}/></div>
             <Border1 />
-            <div><PasswordDesign type="password" placeholder="Enter your password" name='input_pw' value={input2} onChange={Password_onchange}/></div>
+            <div><PasswordDesign type="password" placeholder="Enter your password" name='password' value={input2} onChange={Password_onchange}/></div>
             <Border2 />
             <LoginBtn type="submit" onClick={onClick}>로그인</LoginBtn>
           </IdPass>
