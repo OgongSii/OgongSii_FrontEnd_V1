@@ -172,7 +172,7 @@ export default function Login() {
         <WhiteBar>
           <IdPass>
             <Title>로그인</Title>
-            <div><IdDesign type="text" placeholder="Enter your name" name='username' value={input1} onChange={Id_onchange}/></div>
+            <div><IdDesign type="text" placeholder="Enter your ID" name='username' value={input1} onChange={Id_onchange}/></div>
             <Border1 />
             <div><PasswordDesign type="password" placeholder="Enter your password" name='password' value={input2} onChange={Password_onchange}/></div>
             <Border2 />
