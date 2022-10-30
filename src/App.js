@@ -5,19 +5,18 @@ import Login from './Login';
 import Join from './Join';
 import Ranking from './Ranking';
 import Error from './Error';
+import Home from './Home';
 function App() {
   return (
     <div>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<App/>}/>
-            <Route path='/timer' element={<Timer />}/>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/join' element={<Join />}/>
-            <Route path='/rank' element={<Ranking />}/>
-            <Route path='*' element={<Error/>}/>
-          </Routes> 
-        </BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/timer' element={<Timer />}/>
+        <Route path='/login' element={<Login />}/>
+        <Route path='/join' element={<Join />}/>
+        <Route path='/rank' element={<Ranking />}/>
+        <Route path='*' element={<Error/>}/>
+      </Routes> 
     </div>
   )
 }
