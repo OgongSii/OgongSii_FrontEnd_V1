@@ -1,10 +1,10 @@
 import './App.css';
 import {Route,Routes,BrowserRouter,Link} from 'react-router-dom';
-import Timer from './Timer';
-import Login from './Login';
-import Join from './Join';
-import Ranking from './Ranking';
-import Error from './Error';
+import Timer from './pages/Timer';
+import Login from './pages/Login';
+import Join from './pages/Join';
+import Ranking from './pages/Ranking';
+import Error from './pages/Error';
 import Home from './Home';
 function App() {
   return (
