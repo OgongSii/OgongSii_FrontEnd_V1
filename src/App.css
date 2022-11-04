@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.header{
+  height: 90px;
+  background-color: #61dafb;
+}
+
+.position{
+  display: flex;
+  position: relative;
+  left:1100px;
+  top:35px;
+}
+
+.line{
+  text-decoration: none;
+  color:#282c34;
+}
+.line:hover{
+  color:aliceblue;
+}

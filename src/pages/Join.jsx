@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import Banner from "../Banner";
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
