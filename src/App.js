@@ -6,6 +6,7 @@ import Join from './pages/Join';
 import Ranking from './pages/Ranking';
 import Error from './pages/Error';
 import Home from './Home';
+import Users from './pages/Users';
 function App() {
   return (
     <div>

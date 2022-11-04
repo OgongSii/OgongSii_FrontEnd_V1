@@ -166,12 +166,22 @@ export default function Login() {
 
   const onClick=useCallback(e=>{
     if(input1&&input2&&input3){
-
-      SetInput1('');
-      SetInput2('');
-      SetInput3('');
+      axios.post("./check", {
+        username: input1,
+        password: input2
+    })
+    .then(function (response) {
+        console.log('성공');
+;    }).catch(function (error) {
+        console.log('에러');
+    }).then(function() {
+        console.log('에에러');
+    });
     }
     else alert('제대로 입력해주세요!');
+    SetInput1('');
+    SetInput2('');
+    SetInput3('');
   },[input1,input2,input3]);
   
   return (
