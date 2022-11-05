@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useRef } from "react";
 
 const Bg = styled.div`
   width: 100%;
@@ -167,17 +168,21 @@ export default function Login() {
 
   const onClick=useCallback(e=>{
     if(input1&&input2&&input3){
-      axios.post("", {
-        username: input1,
-        password: input2
-    })
-    .then(function (response) {
-        console.log('성공');
-;    }).catch(function (error) {
-        console.log('에러');
-    }).then(function() {
-        console.log('에에러');
-    });
+      if(input2===input3){
+        let data={
+          name: input1,
+          password: input2
+        }
+        axios.post("http://10.80.162.114:8080/SignUp",JSON.stringify(data), {
+          headers: {
+            "Content-Type": `application/json`,
+          },
+      }).then(function (response) {
+          console.log(response);
+      }).catch(function (error) {
+          console.log(error);
+      });
+    }
     }
     else alert('제대로 입력해주세요!');
     SetInput1('');
