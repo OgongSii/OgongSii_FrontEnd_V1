@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
-import Banner from "../Banner";
+
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
@@ -33,7 +33,6 @@ export default function Ranking() {
     },[overtime,cnt]);
   return (
     <div>
-      <Banner/>
       <Bg>
         <Form>
           {/*action="/record" method="post"*/}

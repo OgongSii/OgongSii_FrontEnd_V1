@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './Timer.css';
-import Banner from '../Banner';
 
 const BackGround=styled.div`
     width: 100%;
@@ -95,7 +94,6 @@ export default function Timer(){
 
     return(
         <div>
-        <Banner/>
         <BackGround>
             <WhiteBar> 
                 <TextSet>
