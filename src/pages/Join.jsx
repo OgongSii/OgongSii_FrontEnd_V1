@@ -167,7 +167,7 @@ export default function Login() {
 
   const onClick=useCallback(e=>{
     if(input1&&input2&&input3){
-      axios.post("./check", {
+      axios.post("", {
         username: input1,
         password: input2
     })
