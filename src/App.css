@@ -56,5 +56,6 @@
   font-weight: bold;
 }
 .line:hover{
-  color:aliceblue;
+  opacity: 0.8;
+  transition: opacity 0.25s ease-out;
 }

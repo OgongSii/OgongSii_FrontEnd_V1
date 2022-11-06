@@ -8,27 +8,6 @@ const Bg = styled.div`
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-  background-size: 300% 300%;
-  background-image: linear-gradient(
-    -45deg,
-    #3be35f 0%,
-    rgba(87, 111, 230, 1) 25%,
-    #57e1e6 51%,
-    #70e33b 100%
-  );
-  animation: AnimateBG 20s ease infinite;
-
-  @keyframes AnimateBG {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 `;
 
 const WhiteBar = styled.div`
@@ -75,14 +54,14 @@ const IdDesign = styled.input`
   }
 `;
 const Border1 = styled.div`
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #CC99FF;
   width: 55%;
   position: relative;
   left: 150px;
 `;
 
 const Border2 = styled.div`
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #CC99FF;
   width: 55%;
   position: relative;
   left: 150px;
@@ -113,39 +92,17 @@ const LoginBtn = styled.button`
     opacity: 0.8;
   }
   color: black;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   padding-bottom: 1.5rem;
-  margin-top: 50px;
+  margin-top: 70px;
+  padding-top:25px;
   align-items: center;
   justify-content: center;
-  border-radius: 2.2rem;
+  border-radius: 1rem;
   width: 300px;
   font-family: "work sans";
   background-repeat: no-repeat;
-  background-size: 300% 300%;
-  background-image: linear-gradient(450deg,
-            #ff0000,
-            #ff7300,
-            #fffb00,
-            #48ff00,
-            #00ffd5,
-            #002bff,
-            #7a00ff,
-            #ff00c8,
-            #ff0000);
-  animation: AnimateBG 20s ease infinite;
-
-  @keyframes AnimateBG {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  background-color:#CC99FF;
 `;
 export default function Login() {
   const [input1,SetInput1]=useState('');
@@ -168,6 +125,7 @@ export default function Login() {
   },[input1,input2]);
   return (
     <div>
+      <style>{'body { background-color: #E5CCFF; }'}</style>
       <Bg>
         <WhiteBar>
           <IdPass>
@@ -176,7 +134,7 @@ export default function Login() {
             <Border1 />
             <div><PasswordDesign type="password" placeholder="Enter your password" name='password' value={input2} onChange={Password_onchange}/></div>
             <Border2 />
-            <LoginBtn type="submit" onClick={onClick}>로그인</LoginBtn>
+            <LoginBtn type="submit" onClick={onClick}>Login</LoginBtn>
           </IdPass>
         </WhiteBar>
       </Bg>

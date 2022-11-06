@@ -20,7 +20,7 @@ export default function Home(){
                 <Link to='./login' className="line">로그인</Link>
             </Li>
             <Li>
-                <Link to='./join' className="line">회원가입</Link>
+                <Link to='./SignUp' className="line">회원가입</Link>
             </Li>
         </div>
     </div>
