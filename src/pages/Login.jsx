@@ -131,12 +131,12 @@ export default function Login() {
             password: input2,
           };*/
           axios
-            .post("http://10.80.162.174:8080/login", {
+            .post("/login", {
               //JSON.stringify(data),
               /*headers: {
                 "Content-Type": `application/json`,
               },*/
-              name: input1,
+              username: input1,
               password: input2,
             })
             .then(function (response) {
@@ -163,7 +163,7 @@ export default function Login() {
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
-                name="name"
+                name="username"
                 value={input1}
                 onChange={Id_onchange}
               />
