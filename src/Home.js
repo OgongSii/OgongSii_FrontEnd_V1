@@ -8,7 +8,6 @@ const Li=styled.li`
 `;
 export default function Home(){
     return(
-    <div className="header">
         <div className="position">
             <Li>
                 <Link to='./timer' className="line">타이머</Link>
@@ -23,6 +22,5 @@ export default function Home(){
                 <Link to='./SignUp' className="line">회원가입</Link>
             </Li>
         </div>
-    </div>
     );
 }

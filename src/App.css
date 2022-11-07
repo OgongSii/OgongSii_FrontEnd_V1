@@ -38,15 +38,15 @@
 }
 
 .header{
-  height: 90px;
-  background-color: #61dafb;
+  height: 80px;
+  border-bottom: 1px solid gray;
 }
 
 .position{
   display: flex;
   position: relative;
   left:1000px;
-  top:30px;
+  bottom: 25px;
 }
 
 .line{

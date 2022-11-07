@@ -118,7 +118,24 @@ export default function Login() {
 
   const onClick=useCallback(e=>{
     if(input1&&input2){
-      
+      if (input1 && input2) {
+          let data = {
+            username: input1,
+            password: input2,
+          };
+          axios
+            .get("http://10.80.162.174:8080/login", JSON.stringify(data),{
+              headers: {
+                "Content-Type": `application/json`,
+              },
+            })
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      } else alert("제대로 입력해주세요!");
       SetInput1('');
       SetInput2('');
     }
