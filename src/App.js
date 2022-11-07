@@ -12,7 +12,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          <Route index props element={<Home/>}/>
+          <Route index element={<Home/>}/>
           <Route path='/timer' element={<Timer />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/SignUp' element={<SignUp />}/>
