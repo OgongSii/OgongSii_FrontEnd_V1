@@ -18,10 +18,10 @@ const WhiteBar = styled.div`
   border-radius: 1.2rem;
   align-items: center;
   justify-items: center;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `;
 const Title = styled.div`
   font-weight: bold;
@@ -37,31 +37,31 @@ const IdPass = styled.div`
 const IdDesign = styled.input`
   color: black;
   outline: none;
-  border:none;
+  border: none;
   position: relative;
   left: 170px;
   margin: 70px 0 15px 0;
   font-family: "work sans";
   width: 300px;
   font-size: 18px;
-  &::-webkit-input-placeholder{
+  &::-webkit-input-placeholder {
     opacity: 1;
     transition: opacity 0.25s ease-out;
   }
   &:hover::-webkit-input-placeholder,
-  &:focus::-webkit-input-placeholder{
-  opacity: 0;
+  &:focus::-webkit-input-placeholder {
+    opacity: 0;
   }
 `;
 const Border1 = styled.div`
-  border-bottom: 3px solid #CC99FF;
+  border-bottom: 3px solid #cc99ff;
   width: 55%;
   position: relative;
   left: 150px;
 `;
 
 const Border2 = styled.div`
-  border-bottom: 3px solid #CC99FF;
+  border-bottom: 3px solid #cc99ff;
   width: 55%;
   position: relative;
   left: 150px;
@@ -76,13 +76,13 @@ const PasswordDesign = styled.input`
   left: 170px;
   width: 300px;
   font-size: 18px;
-  &::-webkit-input-placeholder{
+  &::-webkit-input-placeholder {
     opacity: 1;
     transition: opacity 0.25s ease-out;
   }
   &:hover::-webkit-input-placeholder,
-  &:focus::-webkit-input-placeholder{
-  opacity: 0;
+  &:focus::-webkit-input-placeholder {
+    opacity: 0;
   }
 `;
 
@@ -95,39 +95,49 @@ const LoginBtn = styled.button`
   font-size: 1.1rem;
   padding-bottom: 1.5rem;
   margin-top: 70px;
-  padding-top:25px;
+  padding-top: 25px;
   align-items: center;
   justify-content: center;
   border-radius: 1rem;
   width: 300px;
   font-family: "work sans";
   background-repeat: no-repeat;
-  background-color:#CC99FF;
+  background-color: #cc99ff;
 `;
 export default function Login() {
-  const [input1,SetInput1]=useState('');
-  const [input2,SetInput2]=useState('');
+  const [input1, SetInput1] = useState("");
+  const [input2, SetInput2] = useState("");
 
-  const Id_onchange=useCallback(e=>{
-    SetInput1(e.target.value);
-  },[input1]);
+  const Id_onchange = useCallback(
+    (e) => {
+      SetInput1(e.target.value);
+    },
+    [input1]
+  );
 
-  const Password_onchange=useCallback(e=>{
-    SetInput2(e.target.value);
-  },[input2]);
+  const Password_onchange = useCallback(
+    (e) => {
+      SetInput2(e.target.value);
+    },
+    [input2]
+  );
 
-  const onClick=useCallback(e=>{
-    if(input1&&input2){
+  const onClick = useCallback(
+    (e) => {
       if (input1 && input2) {
-          let data = {
+        if (input1 && input2) {
+          /*let data = {
             username: input1,
             password: input2,
-          };
+          };*/
           axios
-            .get("http://10.80.162.174:8080/login", JSON.stringify(data),{
-              headers: {
+            .post("http://10.80.162.174:8080/login", {
+              //JSON.stringify(data),
+              /*headers: {
                 "Content-Type": `application/json`,
-              },
+              },*/
+              name: input1,
+              password: input2,
             })
             .then(function (response) {
               console.log(response);
@@ -135,23 +145,43 @@ export default function Login() {
             .catch(function (error) {
               console.log(error);
             });
-      } else alert("제대로 입력해주세요!");
-      SetInput1('');
-      SetInput2('');
-    }
-  },[input1,input2]);
+        } else alert("제대로 입력해주세요!");
+        SetInput1("");
+        SetInput2("");
+      }
+    },
+    [input1, input2]
+  );
   return (
     <div>
-      <style>{'body { background-color: #E5CCFF; }'}</style>
+      <style>{"body { background-color: #E5CCFF; }"}</style>
       <Bg>
         <WhiteBar>
           <IdPass>
             <Title>로그인</Title>
-            <div><IdDesign type="text" placeholder="Enter your ID" name='username' value={input1} onChange={Id_onchange}/></div>
+            <div>
+              <IdDesign
+                type="text"
+                placeholder="Enter your ID"
+                name="name"
+                value={input1}
+                onChange={Id_onchange}
+              />
+            </div>
             <Border1 />
-            <div><PasswordDesign type="password" placeholder="Enter your password" name='password' value={input2} onChange={Password_onchange}/></div>
+            <div>
+              <PasswordDesign
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                value={input2}
+                onChange={Password_onchange}
+              />
+            </div>
             <Border2 />
-            <LoginBtn type="submit" onClick={onClick}>Login</LoginBtn>
+            <LoginBtn type="submit" onClick={onClick}>
+              Login
+            </LoginBtn>
           </IdPass>
         </WhiteBar>
       </Bg>
