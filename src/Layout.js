@@ -8,12 +8,16 @@ const Img=styled.img`
     position: relative;
     top:15px;
     left:100px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 `;
 export default function Layout(){
     return(
         <div>
             <div className="header">
-               <Link to={'./'}><Img src='dijindaPark.png'/></Link>
+               <Link to='./'><Img src='dijindaPark.png'/></Link>
                <main><Outlet/></main>
             </div>
         </div>

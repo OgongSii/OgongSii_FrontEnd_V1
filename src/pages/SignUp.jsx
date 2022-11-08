@@ -141,7 +141,7 @@ export default function SignUp() {
             password: input2,
           };
           axios
-            .post("/api/user/SignUp", JSON.stringify(data), {
+            .post("/api/auth/signUp", JSON.stringify(data), {
               headers: {
                 "Content-Type": `application/json`,
               },

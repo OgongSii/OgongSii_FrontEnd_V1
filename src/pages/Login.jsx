@@ -129,11 +129,11 @@ export default function Login() {
       if (input1 && input2) {
         if (input1 && input2) {
           let data = {
-            username: input1,
+            name: input1,
             password: input2,
           };
           axios
-            .post("/api/user/login",JSON.stringify(data), {
+            .post("/api/auth/login",JSON.stringify(data), {
               //JSON.stringify(data),
               headers: {
                 "Content-Type": `application/json`,
@@ -165,7 +165,7 @@ export default function Login() {
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
-                name="username"
+                name="name"
                 value={input1}
                 onChange={Id_onchange}
               />

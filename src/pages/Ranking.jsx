@@ -2,6 +2,30 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 
+const Bg = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+`;
+
+const WhiteBar = styled.div`
+  width: 650px;
+  height: 800px;
+  margin: 50px auto;
+  background-color: white;
+  border-radius: 1.2rem;
+  position:relative;
+  bottom:180px;
+  align-items: center;
+  justify-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`;
 
 const Form = styled.form`
   background-color: white;
@@ -11,6 +35,10 @@ const Form = styled.form`
   position: relative;
   top:100px;
   left:30px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `;
 const Input = styled.input`
   position: relative;
@@ -120,6 +148,11 @@ export default function Ranking() {
             제출
           </Button>
         </Form>
+        <Bg>
+          <WhiteBar>
+
+          </WhiteBar>
+        </Bg>
       </div>
     </div>
   );
