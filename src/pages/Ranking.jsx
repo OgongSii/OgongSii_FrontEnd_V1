@@ -2,24 +2,38 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 
-const Bg = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-repeat: no-repeat;
-`;
 
 const Form = styled.form`
   background-color: white;
   border-radius: 1rem;
+  width:260px;
+  height:250px;
+  position: relative;
+  top:100px;
+  left:30px;
 `;
 const Input = styled.input`
   position: relative;
-  top: 15px;
-  left: 45px;
+  left: 55px;
+  bottom:15px;
   outline: none;
+  width:150px;
+`;
+const Button = styled.button`
+  margin-top:15px;
+  font-size:15px;
+  border:2px solid black;
+  font-size:15px;
+  &:hover{
+    opacity: 0.8;
+    background-color:black;
+    color:white;
+    border:3px solid #C0C0C0;
+  }
+`;
+const Div = styled.button`
+  font-size:14px;
+  position: relative;
 `;
 export default function Ranking() {
   const [overtime, SetOverTime] = useState(true);
@@ -78,15 +92,16 @@ export default function Ranking() {
   return (
     <div>
       <style>{"body { background-color: #C0C0C0; }"}</style>
-      <Bg>
+      <div>
         <Form>
+          <Div>공부한 시간</Div>
           {/*action="/record" method="post"*/}
           <Input
             type="number"
             value={hour}
             max="12"
             min="0"
-            placeholder="시"
+            placeholder="몇시간임?ㅋㅋ"
             name="h"
             onChange={onChange1}
           />
@@ -95,17 +110,17 @@ export default function Ranking() {
             value={minute}
             min="0"
             max="59"
-            placeholder="분"
+            placeholder="몇분임?ㅋㅋ"
             name="m"
             step="10"
             onChange={onChange2}
           />
           <br />
-          <button type="submit" onClick={onClick}>
+          <Button type="submit" onClick={onClick}>
             제출
-          </button>
+          </Button>
         </Form>
-      </Bg>
+      </div>
     </div>
   );
 }

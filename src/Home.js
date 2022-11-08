@@ -10,7 +10,7 @@ export default function Home(){
     return(
         <div className="position">
             <Li>
-                <Link to='./timer' className="line">타이머</Link>
+                <Link to='./timer' className="line" target='_blank'>타이머</Link>
             </Li>
             <Li>   
                 <Link to='./rank' className="line">랭킹</Link>
