@@ -11,28 +11,44 @@ const Bg = styled.div`
   background-repeat: no-repeat;
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+  background-color: white;
+  border-radius: 1rem;
+`;
+const Input = styled.input`
+  position: relative;
+  top: 15px;
+  left: 45px;
+  outline: none;
+`;
 export default function Ranking() {
   const [overtime, SetOverTime] = useState(true);
-  const [cnt,SetCnt]=useState(0);
-  const [hour,SetHour]=useState('');
-  const [minute,SetMinute]=useState('');
+  const [cnt, SetCnt] = useState(0);
+  const [hour, SetHour] = useState("");
+  const [minute, SetMinute] = useState("");
 
-  const onChange1=useCallback(e=>{
-    SetHour(e.target.value);
-  },[hour]);
-  const onChange2=useCallback(e=>{
-    SetMinute(e.target.value);
-  },[minute]);
+  const onChange1 = useCallback(
+    (e) => {
+      SetHour(e.target.value);
+    },
+    [hour]
+  );
+  const onChange2 = useCallback(
+    (e) => {
+      SetMinute(e.target.value);
+    },
+    [minute]
+  );
 
-  const onClick = useCallback((e) => {
-      if(hour&&minute){
+  const onClick = useCallback(
+    (e) => {
+      if (hour && minute) {
         let data = {
-          hour: hour,
-          minute: minute,
+          h: hour,
+          m: minute,
         };
         axios
-          .post("http://10.80.162.174:8080/api/record/record", JSON.stringify(data), {
+          .post("/api/record/record", JSON.stringify(data), {
             headers: {
               "Content-Type": `application/json`,
             },
@@ -44,27 +60,50 @@ export default function Ranking() {
             console.log(error);
           });
       }
+
       SetCnt(1);
-      if(cnt===1) {
-        alert('한 번 밖에 등록할 수 없다.');
-      }
-      else {
-        alert('등록성공!');
+      if (cnt === 1) {
+        alert("한 번 밖에 등록할 수 없다.");
+      } else if (!hour && !minute) {
+        alert("공백입니다.");
+      } else {
+        alert("등록성공!");
         SetOverTime(!overtime);
       }
       console.log(overtime);
       console.log(cnt);
-    },[overtime,cnt]);
+    },
+    [overtime, cnt, hour, minute]
+  );
   return (
     <div>
-      <style>{'body { background-color: springgreen; }'}</style>
+      <style>{"body { background-color: #C0C0C0; }"}</style>
       <Bg>
         <Form>
           {/*action="/record" method="post"*/}
-          <input type="number" value={hour} max="12" min="0" placeholder="시" name="h" onChange={onChange1} />
-          <input type="number" value={minute} min="0" max="59" placeholder="분" name="m" step="10" onChange={onChange2}/>
+          <Input
+            type="number"
+            value={hour}
+            max="12"
+            min="0"
+            placeholder="시"
+            name="h"
+            onChange={onChange1}
+          />
+          <Input
+            type="number"
+            value={minute}
+            min="0"
+            max="59"
+            placeholder="분"
+            name="m"
+            step="10"
+            onChange={onChange2}
+          />
           <br />
-          <button type="submit" onClick={onClick}>제출</button>
+          <button type="submit" onClick={onClick}>
+            제출
+          </button>
         </Form>
       </Bg>
     </div>

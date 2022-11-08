@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
@@ -107,6 +108,7 @@ const LoginBtn = styled.button`
 export default function Login() {
   const [input1, SetInput1] = useState("");
   const [input2, SetInput2] = useState("");
+  const navigate=useNavigate();
 
   const Id_onchange = useCallback(
     (e) => {
@@ -126,21 +128,21 @@ export default function Login() {
     (e) => {
       if (input1 && input2) {
         if (input1 && input2) {
-          /*let data = {
+          let data = {
             username: input1,
             password: input2,
-          };*/
+          };
           axios
-            .post("/login", {
+            .post("/api/user/login",JSON.stringify(data), {
               //JSON.stringify(data),
-              /*headers: {
+              headers: {
                 "Content-Type": `application/json`,
-              },*/
-              username: input1,
-              password: input2,
+              },
             })
             .then(function (response) {
               console.log(response);
+              alert('로그인에 성공!')
+              navigate('/'); 
             })
             .catch(function (error) {
               console.log(error);
