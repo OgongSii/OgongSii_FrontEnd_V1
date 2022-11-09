@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useRef } from "react";
+import '../App.css';
 
 const Bg = styled.div`
   width: 100%;

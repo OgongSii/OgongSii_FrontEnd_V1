@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import '../App.css';
 import { useNavigate } from "react-router-dom";
 const Bg = styled.div`
   width: 100%;
@@ -23,7 +24,7 @@ const WhiteBar = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`;
+`;   
 const Title = styled.div`
   font-weight: bold;
   color: black;
@@ -141,11 +142,12 @@ export default function Login() {
             })
             .then(function (response) {
               console.log(response);
-              alert('로그인에 성공!')
+              alert('로그인에 성공!');
               navigate('/'); 
             })
             .catch(function (error) {
               console.log(error);
+              alert('로그인에 실패하셨습니다!');
             });
         } else alert("제대로 입력해주세요!");
         SetInput1("");

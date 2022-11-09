@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
-
+import '../App.css';
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
@@ -13,12 +13,13 @@ const Bg = styled.div`
 
 const WhiteBar = styled.div`
   width: 650px;
-  height: 800px;
-  margin: 50px auto;
+  height: 640px;
+  margin:0 auto;
   background-color: white;
   border-radius: 1.2rem;
-  position:relative;
-  bottom:180px;
+  position: absolute;
+  top:170px;
+  left:470px;
   align-items: center;
   justify-items: center;
   -webkit-user-select: none;
@@ -90,13 +91,14 @@ export default function Ranking() {
           m: minute,
         };
         axios
-          .post("/api/record/record", JSON.stringify(data), {
+          .post("/api/record/record2", JSON.stringify(data), {
             headers: {
               "Content-Type": `application/json`,
             },
           })
           .then(function (response) {
             console.log(response);
+
           })
           .catch(function (error) {
             console.log(error);
@@ -109,7 +111,6 @@ export default function Ranking() {
       } else if (!hour && !minute) {
         alert("공백입니다.");
       } else {
-        alert("등록성공!");
         SetOverTime(!overtime);
       }
       console.log(overtime);
@@ -140,7 +141,6 @@ export default function Ranking() {
             max="59"
             placeholder="몇분임?ㅋㅋ"
             name="m"
-            step="10"
             onChange={onChange2}
           />
           <br />

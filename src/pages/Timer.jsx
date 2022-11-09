@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './Timer.css';
-
+import '../App.css';
 const BackGround=styled.div`
     display: flex;
     align-items: center;

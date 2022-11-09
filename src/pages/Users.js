@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import '../App.css';
 function Users() {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
