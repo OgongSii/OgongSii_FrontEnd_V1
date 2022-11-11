@@ -137,8 +137,8 @@ export default function SignUp() {
       if (input1 && input2 && input3) {
         if (input2 === input3) {
           let data = {
-            name: input1,
-            password: input2,
+            "name" : input1,
+            "passowrd" : input2,
           };
           axios
             .post("/api/auth/signUp", JSON.stringify(data), {
@@ -171,7 +171,7 @@ export default function SignUp() {
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
-                name="username"
+                name="name"
                 value={input1}
                 onChange={Id_onchange}
               />
