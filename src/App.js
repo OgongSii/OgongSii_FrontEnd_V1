@@ -1,5 +1,5 @@
 import './App.css';
-import {Route,Routes,BrowserRouter,Link} from 'react-router-dom';
+import {Route,Routes} from 'react-router-dom';
 import Timer from './pages/Timer';
 import Login from './pages/Login';
 import Ranking from './pages/Ranking';

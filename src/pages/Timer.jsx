@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useMediaQuery } from 'react-responsive'
 import './Timer.css';
 import '../App.css';
 const BackGround=styled.div`

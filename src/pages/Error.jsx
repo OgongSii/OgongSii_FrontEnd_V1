@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { useMediaQuery } from 'react-responsive'
 import '../App.css';
 const FourZeroFour=styled.h1`
     margin:50px auto;

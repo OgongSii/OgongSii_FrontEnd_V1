@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
-import { useMediaQuery } from 'react-responsive'
 import styled from "styled-components";
 import '../App.css';
 const Bg = styled.div`

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useMediaQuery } from 'react-responsive'
 import './App.css';
 const Li=styled.li`
     list-style-type : none;

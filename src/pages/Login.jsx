@@ -3,7 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import '../App.css';
 import { useNavigate } from "react-router-dom";
-import { useMediaQuery } from 'react-responsive'
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
