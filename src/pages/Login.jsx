@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import '../App.css';
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
@@ -157,13 +158,13 @@ export default function Login() {
     [input1, input2]
   );
   return (
-    <div>
+    <div className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
       <Bg>
-        <WhiteBar>
+        <WhiteBar className="fadein">
           <IdPass>
-            <Title>로그인</Title>
-            <div>
+            <Title className="fadein">로그인</Title>
+            <div className="fadein">
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
@@ -172,8 +173,8 @@ export default function Login() {
                 onChange={Id_onchange}
               />
             </div>
-            <Border1 />
-            <div>
+            <Border1 className="fadein"/>
+            <div className="fadein">
               <PasswordDesign
                 type="password"
                 placeholder="Enter your password"
@@ -182,8 +183,8 @@ export default function Login() {
                 onChange={Password_onchange}
               />
             </div>
-            <Border2 />
-            <LoginBtn type="submit" onClick={onClick}>
+            <Border2 className="fadein"/>
+            <LoginBtn type="submit" className="fadein" onClick={onClick}>
               Login
             </LoginBtn>
           </IdPass>

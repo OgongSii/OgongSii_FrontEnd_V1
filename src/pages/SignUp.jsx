@@ -1,6 +1,7 @@
 import { useCallback, useState, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useMediaQuery } from 'react-responsive'
 import '../App.css';
 
 const Bg = styled.div`
@@ -161,13 +162,13 @@ export default function SignUp() {
     [input1, input2, input3]
   );
   return (
-    <div>
+    <div className="wrap">
       <style>{'body { background-color: #CCCCFF; }'}</style>
       <Bg>
-        <WhiteBar>
+        <WhiteBar className="fadein">
           <IdPass>
-            <Title>회원가입</Title>
-            <div>
+            <Title className="fadein">회원가입</Title>
+            <div className="fadein">
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
@@ -176,8 +177,8 @@ export default function SignUp() {
                 onChange={Id_onchange}
               />
             </div>
-            <Border1 />
-            <div>
+            <Border1 className="fadein"/>
+            <div className="fadein">
               <PasswordDesign
                 type="password"
                 placeholder="Enter your password"
@@ -186,8 +187,8 @@ export default function SignUp() {
                 onChange={Password_onchange}
               />
             </div>
-            <Border2 />
-            <div>
+            <Border2 className="fadein"/>
+            <div className="fadein">
               <PasswordDesign
                 type="password"
                 placeholder="Check your password"
@@ -196,8 +197,8 @@ export default function SignUp() {
                 onChange={Password_onchange_check}
               />
             </div>
-            <Border2 />
-            <JoinBtn type="submit" onClick={onClick}>
+            <Border2 className="fadein"/>
+            <JoinBtn type="submit" className="fadein" onClick={onClick}>
               Sign In 
             </JoinBtn>
           </IdPass>
