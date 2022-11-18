@@ -14,11 +14,9 @@ const Img=styled.img`
 `;
 export default function Layout(){
     return(
-        <div>
+        <div> 
             <div className="header">
-               <Link to='./'>
-                    <Img src='dijindaPark.png'/>
-                </Link>
+               <Link to='/'><Img src='dijindaPark.png'/></Link>
                <main><Outlet/></main>
             </div>
         </div>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import '../App.css';
 import { useNavigate } from "react-router-dom";
+
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
@@ -133,8 +134,7 @@ export default function Login() {
             name: input1,
             password: input2,
           };
-          axios
-            .post("/api/auth/login",JSON.stringify(data), {
+          axios.post("/api/auth/login",JSON.stringify(data), {
               //JSON.stringify(data),
               headers: {
                 "Content-Type": `application/json`,
@@ -142,12 +142,9 @@ export default function Login() {
             })
             .then(function (response) {
               console.log(response);
-              alert('로그인에 성공!');
-              navigate('/'); 
             })
             .catch(function (error) {
               console.log(error);
-              alert('로그인에 실패하셨습니다!');
             });
         } else alert("제대로 입력해주세요!");
         SetInput1("");
