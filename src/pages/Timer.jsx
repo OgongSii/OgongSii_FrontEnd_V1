@@ -76,10 +76,10 @@ export default function Timer(){
     useEffect(timer, [count]);
 
     return(
-        <div>
+        <div className='wrap'>
         <style>{'body { background-color: #FFCCE5; }'}</style>
         <BackGround>
-            <WhiteBar> 
+            <WhiteBar className="fadein"> 
                 <TextSet>
                     <Font>
                         {currentHours < 10 ? `0${currentHours}` : currentHours}:{
@@ -87,9 +87,9 @@ export default function Timer(){
                         currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}
                     </Font>
 
-                    <Btn onClick={start} className='btnset'>Start</Btn>
-                    <Btn onClick={stop} className='btnset'>Stop</Btn>
-                    <Btn onClick={reset} className='btnset'>Reset</Btn>
+                    <Btn onClick={start} className='btnset fadein'>Start</Btn>
+                    <Btn onClick={stop} className='btnset fadein'>Stop</Btn>
+                    <Btn onClick={reset} className='btnset fadein'>Reset</Btn>
                 </TextSet>
             </WhiteBar>
         </BackGround>

@@ -44,12 +44,13 @@ const Form = styled.form`
 const Input = styled.input`
   position: relative;
   left: 55px;
-  bottom:15px;
+  top:55px;
   outline: none;
   width:150px;
+  margin-bottom:10px;
 `;
 const Button = styled.button`
-  margin-top:15px;
+  margin-top:65px;
   font-size:15px;
   border:2px solid black;
   font-size:15px;
@@ -60,8 +61,12 @@ const Button = styled.button`
     border:3px solid #C0C0C0;
   }
 `;
-const Div = styled.button`
-  font-size:14px;
+const Title = styled.div`
+  font-weight: bold;
+  font-size:20px;
+  position:relative;
+  top:30px;
+  text-align:center;
   position: relative;
 `;
 export default function Ranking() {
@@ -122,10 +127,10 @@ export default function Ranking() {
     <div>
       <style>{"body { background-color: #C0C0C0; }"}</style>
       <div>
-        <Form>
-          <Div>공부한 시간</Div>
+        <Form className="fadein">
+          <Title className="fadein">공부한 시간</Title>
           {/*action="/record" method="post"*/}
-          <Input
+          <Input className="fadein"
             type="number"
             value={hour}
             max="12"
@@ -134,7 +139,7 @@ export default function Ranking() {
             name="h"
             onChange={onChange1}
           />
-          <Input
+          <Input className="fadein"
             type="number"
             value={minute}
             min="0"
@@ -143,13 +148,13 @@ export default function Ranking() {
             name="m"
             onChange={onChange2}
           />
-          <br />
-          <Button type="submit" onClick={onClick}>
+          <br className="fadein"/>
+          <Button type="submit" className="fadein" onClick={onClick}>
             제출
           </Button>
         </Form>
         <Bg>
-          <WhiteBar>
+          <WhiteBar className="wrap fadein">
 
           </WhiteBar>
         </Bg>

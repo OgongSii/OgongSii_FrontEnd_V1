@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import '../App.css';
 import { useNavigate } from "react-router-dom";
+
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
@@ -128,42 +129,41 @@ export default function Login() {
   const onClick = useCallback(
     (e) => {
       if (input1 && input2) {
-        if (input1 && input2) {
-          let data = {
-            name: input1,
-            password: input2,
-          };
-          axios
-            .post("/api/auth/login",JSON.stringify(data), {
-              //JSON.stringify(data),
-              headers: {
-                "Content-Type": `application/json`,
-              },
-            })
-            .then(function (response) {
-              console.log(response);
-              alert('로그인에 성공!');
-              navigate('/'); 
-            })
-            .catch(function (error) {
-              console.log(error);
-              alert('로그인에 실패하셨습니다!');
-            });
-        } else alert("제대로 입력해주세요!");
+        let data = {
+          name: input1,
+          password: input2,
+        };
+        axios.post("/api/auth/login",JSON.stringify(data), {
+            headers: {
+              "Content-Type": `application/json`,
+            },
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .then(response => {
+          if (response.token) {
+            localStorage.setItem('wtw-token', response.token);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
         SetInput1("");
         SetInput2("");
       }
+      else alert("제대로 입력해주세요!");
     },
     [input1, input2]
   );
   return (
-    <div>
+    <div className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
       <Bg>
-        <WhiteBar>
+        <WhiteBar className="fadein">
           <IdPass>
-            <Title>로그인</Title>
-            <div>
+            <Title className="fadein">로그인</Title>
+            <div className="fadein">
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
@@ -172,8 +172,8 @@ export default function Login() {
                 onChange={Id_onchange}
               />
             </div>
-            <Border1 />
-            <div>
+            <Border1 className="fadein"/>
+            <div className="fadein">
               <PasswordDesign
                 type="password"
                 placeholder="Enter your password"
@@ -182,8 +182,8 @@ export default function Login() {
                 onChange={Password_onchange}
               />
             </div>
-            <Border2 />
-            <LoginBtn type="submit" onClick={onClick}>
+            <Border2 className="fadein"/>
+            <LoginBtn type="submit" className="fadein" onClick={onClick}>
               Login
             </LoginBtn>
           </IdPass>

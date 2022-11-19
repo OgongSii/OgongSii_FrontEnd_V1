@@ -59,7 +59,6 @@ body{
   left:1000px;
   bottom: 25px;
 }
-
 .line{
   text-decoration: none;
   color:#282c34;
@@ -69,4 +68,45 @@ body{
 .line:hover{
   opacity: 0.8;
   transition: opacity 0.25s ease-out;
+}
+
+.wrap{
+  display: grid;
+  grid-template-columns: repeat(1,2fr); 
+}
+
+.fadein{
+  position: relative;
+  overflow: hidden;
+  animation: fadein 1.5s ease-in-out;
+}
+
+@keyframes fadein{
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+.infade{
+  position: relative;
+  overflow: hidden;
+  animation: fadein 1.5s ease-in-out;
+}
+
+@keyframes infade{
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+
 }
