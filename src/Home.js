@@ -22,8 +22,6 @@ export default function Home(){
                     <Link to='./SignUp' className="line">회원가입</Link>
                 </Li>
             </div>
-
-
         </div>
     );
 }

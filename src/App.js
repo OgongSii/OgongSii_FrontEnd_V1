@@ -6,7 +6,9 @@ import Ranking from './pages/Ranking';
 import Error from './pages/Error';
 import Home from './Home';
 import Layout from './Layout';
+import LoginHome from './LoginHome';
 import SignUp from './pages/SignUp';
+import MyPage from './pages/MyPage';
 function App() {
   return (
     <div>
@@ -17,6 +19,12 @@ function App() {
           <Route path='/login' element={<Login />}/>
           <Route path='/SignUp' element={<SignUp />}/>
           <Route path='/rank' element={<Ranking />}/>
+        </Route>
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<LoginHome/>}/>
+          <Route path='/timer' element={<Timer />}/>
+          <Route path='/rank' element={<Ranking />}/>
+          <Route path='/mypage' element={<MyPage/>}/>
         </Route>
         <Route path='*' element={<Error/>}/>
       </Routes> 

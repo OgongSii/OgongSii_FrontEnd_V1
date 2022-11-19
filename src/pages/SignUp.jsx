@@ -138,8 +138,8 @@ export default function SignUp() {
       if (input1 && input2 && input3) {
         if (input2 === input3) {
           let data = {
-            "name" : input1,
-            "passowrd" : input2,
+            name : input1,
+            passowrd : input2,
           };
           axios
             .post("/api/auth/signUp", JSON.stringify(data), {
