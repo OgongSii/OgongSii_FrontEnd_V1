@@ -126,36 +126,56 @@ export default function Login() {
     [input2]
   );
 
-  const onClick = useCallback(
-    (e) => {
-      if (input1 && input2) {
-        let data = {
-          name: input1,
-          password: input2,
-        };
-        axios.post("/api/auth/login",JSON.stringify(data), {
-            headers: {
-              "Content-Type": `application/json`,
-            },
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .then(response => {
-          if (response.token) {
-            localStorage.setItem('wtw-token', response.token);
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
+  // const onClick = useCallback(
+  //   (e) => {
+  //     if (input1 && input2) {
+  //       let data = {
+  //         name: input1,
+  //         password: input2,
+  //       };
+  //       axios.post("/api/auth/login",JSON.stringify(data), {
+  //           headers: {
+  //             "Content-Type": `application/json`,
+  //           },
+  //       })
+  //       .then(function (response) {
+  //         console.log(response);
+  //       })
+  //       .then(response => {
+  //         if (response.token) {
+  //           localStorage.setItem('wtw-token', response.token);
+  //         }
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  //       SetInput1("");
+  //       SetInput2("");
+  //     }
+  //     else alert("제대로 입력해주세요!");
+  //   },
+  //   [input1, input2]
+  // );
+
+  const onClick = async ()=>{
+    if (input1 && input2) {
+      let data = {
+        name: input1,
+        password: input2,
+      };
+      try{
+        const response=await axios.post("/api/auth/login",JSON.stringify(data), {
+          headers: {
+            "Content-Type": `application/json`,
+          },
         });
-        SetInput1("");
-        SetInput2("");
+        console.log(response.data);
       }
-      else alert("제대로 입력해주세요!");
-    },
-    [input1, input2]
-  );
+      catch(e){
+        console.log(e);
+      }
+    }
+  };
   return (
     <div className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
