@@ -137,15 +137,16 @@ export default function SignUp() {
       if (input1 && input2 && input3) {
         if (input2 === input3) {
           let data = {
-            name : input1,
-            password : input2,
+            "name" : input1,
+            "password" : input2,
           };
           axios
-            .post("/api/auth/signUp", JSON.stringify(data), {
-              headers: {
-                "Content-Type": `application/json`,
-              },
-            })
+            // .post("/api/auth/signUp", JSON.stringify(data), {
+            //   headers: {
+            //     "Content-Type": `application/json`,
+            //   },
+            // })
+            .post("/api/auth/signUp", data)
             .then(function (response) {
               console.log(response);
             })

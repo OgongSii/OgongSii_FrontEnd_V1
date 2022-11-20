@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import '../App.css';
+import "../App.css";
 import { useNavigate } from "react-router-dom";
 
 const Bg = styled.div`
@@ -25,7 +25,7 @@ const WhiteBar = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-`;   
+`;
 const Title = styled.div`
   font-weight: bold;
   color: black;
@@ -110,7 +110,7 @@ const LoginBtn = styled.button`
 export default function Login() {
   const [input1, SetInput1] = useState("");
   const [input2, SetInput2] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const Id_onchange = useCallback(
     (e) => {
@@ -126,56 +126,47 @@ export default function Login() {
     [input2]
   );
 
-  // const onClick = useCallback(
-  //   (e) => {
-  //     if (input1 && input2) {
-  //       let data = {
-  //         name: input1,
-  //         password: input2,
-  //       };
-  //       axios.post("/api/auth/login",JSON.stringify(data), {
-  //           headers: {
-  //             "Content-Type": `application/json`,
-  //           },
-  //       })
-  //       .then(function (response) {
-  //         console.log(response);
-  //       })
-  //       .then(response => {
-  //         if (response.token) {
-  //           localStorage.setItem('wtw-token', response.token);
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //       SetInput1("");
-  //       SetInput2("");
-  //     }
-  //     else alert("제대로 입력해주세요!");
-  //   },
-  //   [input1, input2]
-  // );
+  const onClick = useCallback(
+    (e) => {
+      if (input1 && input2) {
+        let data = {
+          name: input1,
+          password: input2,
+        };
+        axios
+          .post("/api/auth/login", data)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        SetInput1("");
+        SetInput2("");
+      } else alert("제대로 입력해주세요!");
+    },
+    [input1, input2]
+  );
 
-  const onClick = async ()=>{
-    if (input1 && input2) {
-      let data = {
-        name: input1,
-        password: input2,
-      };
-      try{
-        const response=await axios.post("/api/auth/login",JSON.stringify(data), {
-          headers: {
-            "Content-Type": `application/json`,
-          },
-        });
-        console.log(response.data);
-      }
-      catch(e){
-        console.log(e);
-      }
-    }
-  };
+  // const onClick = async ()=>{
+  //   if (input1 && input2) {
+  //     let data = {
+  //       name: input1,
+  //       password: input2,
+  //     };
+  //     try{
+  //       const response=await axios.post("/api/auth/login",JSON.stringify(data), {
+  //         headers: {
+  //           "Content-Type": `application/json`,
+  //         },
+  //       });
+  //       console.log(response.data);
+  //     }
+  //     catch(e){
+  //       console.log(e);
+  //     }
+  //   }
+  // };
   return (
     <div className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
@@ -192,7 +183,7 @@ export default function Login() {
                 onChange={Id_onchange}
               />
             </div>
-            <Border1 className="fadein"/>
+            <Border1 className="fadein" />
             <div className="fadein">
               <PasswordDesign
                 type="password"
@@ -202,7 +193,7 @@ export default function Login() {
                 onChange={Password_onchange}
               />
             </div>
-            <Border2 className="fadein"/>
+            <Border2 className="fadein" />
             <LoginBtn type="submit" className="fadein" onClick={onClick}>
               Login
             </LoginBtn>
