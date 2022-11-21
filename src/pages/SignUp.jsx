@@ -132,35 +132,56 @@ export default function SignUp() {
     [input3]
   );
 
-  const onClick = useCallback(
-    (e) => {
-      if (input1 && input2 && input3) {
-        if (input2 === input3) {
-          let data = {
-            "name" : input1,
-            "password" : input2,
-          };
-          axios
-            // .post("/api/auth/signUp", JSON.stringify(data), {
-            //   headers: {
-            //     "Content-Type": `application/json`,
-            //   },
-            // })
-            .post("/api/auth/signUp", data)
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
+  // const onClick = useCallback(
+  //   (e) => {
+  //     if (input1 && input2 && input3) {
+  //       if (input2 === input3) {
+  //         let data = {
+  //           "name" : input1,
+  //           "password" : input2,
+  //         };
+  //         axios
+  //           // .post("/api/auth/signUp", JSON.stringify(data), {
+  //           //   headers: {
+  //           //     "Content-Type": `application/json`,
+  //           //   },
+  //           // })
+  //           .post("/api/auth/signUp", data)
+  //           .then(function (response) {
+  //             console.log(response);
+  //           })
+  //           .catch(function (error) {
+  //             console.log(error);
+  //           });
+  //       }
+  //     } else alert("제대로 입력해주세요!");
+  //     SetInput1("");
+  //     SetInput2("");
+  //     SetInput3("");
+  //   },
+  //   [input1, input2, input3]
+  // );
+  const onClick = async()=>{
+    if (input1 && input2 && input3) {
+      if (input2 === input3) {
+        let data = {
+          name : input1,
+          password : input2,
+        };
+        try{
+          const response= await axios.post("/api/auth/signUp", data);
+           console.log(response);
         }
-      } else alert("제대로 입력해주세요!");
+        catch(e){
+          console.log(e);
+        }
+      }
+      else alert("제대로 입력해주세요!");
       SetInput1("");
       SetInput2("");
       SetInput3("");
-    },
-    [input1, input2, input3]
-  );
+    }
+  };
   return (
     <div>
       <style>{'body { background-color: #CCCCFF; }'}</style>

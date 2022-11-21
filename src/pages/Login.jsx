@@ -125,7 +125,6 @@ export default function Login() {
     },
     [input2]
   );
-
   const onClick = useCallback(
     (e) => {
       if (input1 && input2) {
@@ -134,12 +133,20 @@ export default function Login() {
           password: input2,
         };
         axios
-          .post("/api/auth/login", data)
+          .post("/api/auth/login", data,{
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
           .then(function (response) {
             console.log(response);
+            if (response.data) {
+              localStorage.setItem('X-AUTH-TOKEN', response.data);
+            }
           })
           .catch(function (error) {
             console.log(error);
+            alert('ㅄㅋ');
           });
         SetInput1("");
         SetInput2("");
@@ -150,16 +157,12 @@ export default function Login() {
 
   // const onClick = async ()=>{
   //   if (input1 && input2) {
-  //     let data = {
-  //       name: input1,
-  //       password: input2,
-  //     };
   //     try{
-  //       const response=await axios.post("/api/auth/login",JSON.stringify(data), {
-  //         headers: {
-  //           "Content-Type": `application/json`,
-  //         },
-  //       });
+  //       let data = {
+  //         name: input1,
+  //         password: input2,
+  //       };
+  //       const response=await axios.post("/api/auth/login",data);
   //       console.log(response.data);
   //     }
   //     catch(e){

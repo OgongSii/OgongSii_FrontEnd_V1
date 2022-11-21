@@ -9,6 +9,8 @@ import Layout from './Layout';
 import LoginHome from './LoginHome';
 import SignUp from './pages/SignUp';
 import MyPage from './pages/MyPage';
+import { useState } from 'react';
+
 function App() {
   return (
     <div>
@@ -16,7 +18,7 @@ function App() {
         <Route path='/' element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path='/timer' element={<Timer />}/>
-          <Route path='/login' element={<Login />}/>
+          <Route path='/login' element={<Login/>}/>
           <Route path='/SignUp' element={<SignUp />}/>
           <Route path='/rank' element={<Ranking />}/>
         </Route>
