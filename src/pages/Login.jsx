@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
+import LoginHome from "../LoginHome";
 
 const Bg = styled.div`
   width: 100%;
@@ -111,7 +112,7 @@ export default function Login() {
   const [input1, SetInput1] = useState("");
   const [input2, SetInput2] = useState("");
   const navigate = useNavigate();
-
+  const [isLogin,SetIsLogin]=useState(false);
   const Id_onchange = useCallback(
     (e) => {
       SetInput1(e.target.value);
@@ -143,6 +144,8 @@ export default function Login() {
             if (response.data) {
               localStorage.setItem('X-AUTH-TOKEN', response.data);
             }
+            SetIsLogin(true);
+            return (isLogin ? <LoginHome/> : <Login/>)
           })
           .catch(function (error) {
             console.log(error);

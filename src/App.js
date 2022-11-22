@@ -22,12 +22,6 @@ function App() {
           <Route path='/SignUp' element={<SignUp />}/>
           <Route path='/rank' element={<Ranking />}/>
         </Route>
-        <Route path='/' element={<Layout/>}>
-          <Route index element={<LoginHome/>}/>
-          <Route path='/timer' element={<Timer />}/>
-          <Route path='/rank' element={<Ranking />}/>
-          <Route path='/mypage' element={<MyPage/>}/>
-        </Route>
         <Route path='*' element={<Error/>}/>
       </Routes> 
     </div>
