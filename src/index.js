@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
-axios.defaults.baseURL = "http://10.80.162.61:8080/";
+axios.defaults.baseURL = "http://10.80.163.139:8080/";
 axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

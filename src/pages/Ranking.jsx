@@ -96,7 +96,7 @@ export default function Ranking() {
           m: minute,
         };
         axios
-          .post("/api/record/record2", JSON.stringify(data), {
+          .post("/api/record/record2", data, {
             headers: {
               "Content-Type": `application/json`,
             },
@@ -108,15 +108,6 @@ export default function Ranking() {
           .catch(function (error) {
             console.log(error);
           });
-      }
-
-      SetCnt(1);
-      if (cnt === 1) {
-        alert("한 번 밖에 등록할 수 없다.");
-      } else if (!hour && !minute) {
-        alert("공백입니다.");
-      } else {
-        SetOverTime(!overtime);
       }
       console.log(overtime);
       console.log(cnt);
