@@ -106,6 +106,10 @@ const JoinBtn = styled.button`
   background-repeat: no-repeat;
   background-color:#9999FF;
 `;
+
+const Screen = styled.div`
+  
+`;
 export default function SignUp() {
   const [input1, SetInput1] = useState("");
   const [input2, SetInput2] = useState("");
@@ -183,7 +187,7 @@ export default function SignUp() {
     }
   };
   return (
-    <div>
+    <Screen>
       <style>{'body { background-color: #CCCCFF; }'}</style>
       <Bg>
         <WhiteBar>
@@ -225,6 +229,6 @@ export default function SignUp() {
           </IdPass>
         </WhiteBar>
       </Bg>
-    </div>
+    </Screen>
   );
 }

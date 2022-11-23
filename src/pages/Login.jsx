@@ -108,6 +108,13 @@ const LoginBtn = styled.button`
   background-repeat: no-repeat;
   background-color: #cc99ff;
 `;
+const Screen = styled.div`
+   @media screen and (max-width: 768px){
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+`;
 export default function Login() {
   const [input1, SetInput1] = useState("");
   const [input2, SetInput2] = useState("");
@@ -174,7 +181,7 @@ export default function Login() {
   //   }
   // };
   return (
-    <div className="wrap">
+    <Screen className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
       <Bg>
         <WhiteBar className="fadein">
@@ -206,6 +213,6 @@ export default function Login() {
           </IdPass>
         </WhiteBar>
       </Bg>
-    </div>
+    </Screen>
   );
 }

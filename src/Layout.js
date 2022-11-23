@@ -12,13 +12,20 @@ const Img=styled.img`
     -ms-user-select: none;
     user-select: none;
 `;
+const Screen=styled.div`
+    @media screen and (max-width: 768px){
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+`;
 export default function Layout(){
     return(
-        <div> 
+        <Screen> 
             <div className="header">
                <Link to='/'><Img src='dijindaPark.png'/></Link>
                <main><Outlet/></main>
             </div>
-        </div>
+        </Screen>
     );
 }

@@ -69,6 +69,13 @@ const Title = styled.div`
   text-align:center;
   position: relative;
 `;
+const Screen =styled.div`
+   @media screen and (max-width: 768px){
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+`;
 export default function Ranking() {
   const [overtime, SetOverTime] = useState(true);
   const [cnt, SetCnt] = useState(0);
@@ -115,7 +122,7 @@ export default function Ranking() {
     [overtime, cnt, hour, minute]
   );
   return (
-    <div>
+    <Screen>
       <style>{"body { background-color: #C0C0C0; }"}</style>
       <div>
         <Form className="fadein">
@@ -150,6 +157,6 @@ export default function Ranking() {
           </WhiteBar>
         </Bg>
       </div>
-    </div>
+    </Screen>
   );
 }
