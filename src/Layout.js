@@ -23,7 +23,7 @@ export default function Layout(){
     return(
         <Screen> 
             <div className="header">
-               <Link to='/'><Img src='dijindaPark.png'/></Link>
+               <a href="/"><Img src='dijindaPark.png'/></a>
                <main><Outlet/></main>
             </div>
         </Screen>

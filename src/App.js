@@ -10,16 +10,19 @@ import LoginHome from './LoginHome';
 import SignUp from './pages/SignUp';
 import MyPage from './pages/MyPage';
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector(state => state.user);
   return (
     <div>
+      {user.name !== "" ? <LoginHome /> : <Login />}
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path='/timer' element={<Timer />}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/SignUp' element={<SignUp />}/>
+          <Route path='/signup' element={<SignUp />}/>
           <Route path='/rank' element={<Ranking />}/>
         </Route>
         <Route path='*' element={<Error/>}/>

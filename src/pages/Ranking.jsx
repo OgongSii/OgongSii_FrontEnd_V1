@@ -12,20 +12,7 @@ const Bg = styled.div`
 `;
 
 const WhiteBar = styled.div`
-  width: 650px;
-  height: 640px;
-  margin:0 auto;
-  background-color: white;
-  border-radius: 1.2rem;
-  position: absolute;
-  top:170px;
-  left:470px;
-  align-items: center;
-  justify-items: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  
 `;
 
 const Form = styled.form`

@@ -2,8 +2,10 @@ import { useCallback, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../reducer/userSlice.js";
 import LoginHome from "../LoginHome";
+import { useDispatch } from "react-redux";
 
 const Bg = styled.div`
   width: 100%;
@@ -115,11 +117,18 @@ const Screen = styled.div`
     padding-right: 1rem;
 }
 `;
+
+const NotLogin = styled.div`
+  margin-top:30px;
+  text-align:center;
+`;
 export default function Login() {
   const [input1, SetInput1] = useState("");
   const [input2, SetInput2] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isLogin,SetIsLogin]=useState(false);
+  const [loading, setLoading] = useState(false);
   const Id_onchange = useCallback(
     (e) => {
       SetInput1(e.target.value);
@@ -152,15 +161,19 @@ export default function Login() {
               localStorage.setItem('X-AUTH-TOKEN', response.data);
             }
             SetIsLogin(true);
-            return (isLogin ? <LoginHome/> : <Login/>)
+            // return (isLogin === true? <LoginHome/> : <Login/>)
+            dispatch(loginUser(response.data.userInfo));
           })
           .catch(function (error) {
             console.log(error);
             alert('ㅄㅋ');
           });
+          // 1순위 로그인 버튼을 누르면 클릭이 안되도록.
+          setLoading(true);
         SetInput1("");
         SetInput2("");
       } else alert("제대로 입력해주세요!");
+      
     },
     [input1, input2]
   );
@@ -207,9 +220,15 @@ export default function Login() {
               />
             </div>
             <Border2 className="fadein" />
-            <LoginBtn type="submit" className="fadein" onClick={onClick}>
+            <LoginBtn disabled={loading} type="submit" className="fadein" onClick={onClick}>
               Login
             </LoginBtn>
+
+            <NotLogin className="fadein">
+              <a href='./signup'>
+                회원가입
+              </a>
+            </NotLogin>
           </IdPass>
         </WhiteBar>
       </Bg>
