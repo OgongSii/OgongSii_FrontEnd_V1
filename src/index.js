@@ -5,10 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from "react-redux";
-import store from "./reducer/store.js";
 
-axios.defaults.baseURL = "http://10.80.163.139:8080/";
+axios.defaults.baseURL = "http://172.29.240.1:8080/";
 axios.defaults.withCredentials = true;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

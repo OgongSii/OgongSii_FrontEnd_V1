@@ -3,7 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import "../App.css";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../reducer/userSlice.js";
 import LoginHome from "../LoginHome";
 import { useDispatch } from "react-redux";
 
@@ -161,15 +160,12 @@ export default function Login() {
               localStorage.setItem('X-AUTH-TOKEN', response.data);
             }
             SetIsLogin(true);
-            // return (isLogin === true? <LoginHome/> : <Login/>)
-            dispatch(loginUser(response.data.userInfo));
+            return (isLogin === true? <LoginHome/> : <Login/>)
           })
           .catch(function (error) {
             console.log(error);
             alert('ㅄㅋ');
           });
-          // 1순위 로그인 버튼을 누르면 클릭이 안되도록.
-          setLoading(true);
         SetInput1("");
         SetInput2("");
       } else alert("제대로 입력해주세요!");
