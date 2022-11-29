@@ -163,11 +163,14 @@ export default function Login() {
             console.log(response);
             if (response.data) {
               localStorage.setItem('X-AUTH-TOKEN', response.data);
+              console.log(response.data);
               setTokenData(localStorage.setItem('X-AUTH-TOKEN', response.data));
-              sendToken();
+              setToken(localStorage.getItem('X-AUTH-TOKEN'));
+              //sendToken();
             }
             // return (isLogin === true? <LoginHome/> : <Login/>);
           })
+          .then(navigate('/'))
           .catch(function (error) {
             console.log(error);
             alert('ㅄㅋ');
@@ -178,21 +181,6 @@ export default function Login() {
     },
     [input1, input2]
   );
-
-  const sendToken = () => {
-    axios.get('/api/auth/', {
-      headers: { Authorization: tokenData },
-    })
-    
-    .then(data => {
-      localStorage.setItem('X-AUTH-TOKEN', data.access_token);
-      setToken(localStorage.getItem('X-AUTH-TOKEN'));
-    })
-    .then(navigate('/'))
-    .catch(e=>{
-      console.error(e);
-    });
-  };
   useEffect(() => {
     if (code) {
       onClick();
