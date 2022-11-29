@@ -6,7 +6,6 @@ import '../App.css';
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
-  display: flex;
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
@@ -15,7 +14,7 @@ const Bg = styled.div`
 const WhiteBar = styled.div`
   width: 650px;
   height: 620px;
-  margin: 50px auto;
+  margin: 80px auto;
   background-color: white;
   border-radius: 1.2rem;
   align-items: center;
@@ -190,10 +189,10 @@ export default function SignUp() {
     <Screen>
       <style>{'body { background-color: #CCCCFF; }'}</style>
       <Bg>
-        <WhiteBar>
+        <WhiteBar className="fadein">
           <IdPass>
-            <Title>회원가입</Title>
-            <div>
+            <Title className="fadein">회원가입</Title>
+            <div className="fadein">
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
@@ -202,8 +201,8 @@ export default function SignUp() {
                 onChange={Id_onchange}
               />
             </div>
-            <Border1 />
-            <div>
+            <Border1 className="fadein"/>
+            <div className="fadein">
               <PasswordDesign
                 type="password"
                 placeholder="Enter your password"
@@ -212,8 +211,8 @@ export default function SignUp() {
                 onChange={Password_onchange}
               />
             </div>
-            <Border2 />
-            <div>
+            <Border2 className="fadein"/>
+            <div className="fadein">
               <PasswordDesign
                 type="password"
                 placeholder="Check your password"
@@ -222,8 +221,8 @@ export default function SignUp() {
                 onChange={Password_onchange_check}
               />
             </div>
-            <Border2 />
-            <JoinBtn type="submit" onClick={onClick}>
+            <Border2 className="fadein"/>
+            <JoinBtn type="submit" onClick={onClick} className="fadein">
               Sign In 
             </JoinBtn>
           </IdPass>

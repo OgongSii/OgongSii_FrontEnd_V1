@@ -1,15 +1,15 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import "../App.css";
-import { Link, useNavigate } from "react-router-dom";
-import LoginHome from "../LoginHome";
-import { useDispatch } from "react-redux";
+import { tokenState } from '../atom/TokenState';
+import { textState } from '../atom/TextState';
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 const Bg = styled.div`
   width: 100%;
   height: 100vh;
-  display: flex;
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
@@ -18,7 +18,7 @@ const Bg = styled.div`
 const WhiteBar = styled.div`
   width: 650px;
   height: 600px;
-  margin: 50px auto;
+  margin: 90px auto;
   background-color: white;
   border-radius: 1.2rem;
   align-items: center;
@@ -122,12 +122,17 @@ const NotLogin = styled.div`
   text-align:center;
 `;
 export default function Login() {
-  const [input1, SetInput1] = useState("");
-  const [input2, SetInput2] = useState("");
+  let params = new URLSearchParams(document.location.search);
+  let code = params.get('code');
+  
+  const [input1, SetInput1] =  useRecoilState(textState);
+  //const [input2, SetInput2] =  useRecoilState(textState);
+  //const [input1, SetInput1] =  useState('');
+  const [input2, SetInput2] =  useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [isLogin,SetIsLogin]=useState(false);
-  const [loading, setLoading] = useState(false);
+  const [tokenData, setTokenData] = useState('');
+  const [token, setToken] = useRecoilState(tokenState);
+
   const Id_onchange = useCallback(
     (e) => {
       SetInput1(e.target.value);
@@ -158,9 +163,10 @@ export default function Login() {
             console.log(response);
             if (response.data) {
               localStorage.setItem('X-AUTH-TOKEN', response.data);
+              setTokenData(localStorage.setItem('X-AUTH-TOKEN', response.data));
+              sendToken();
             }
-            SetIsLogin(true);
-            return (isLogin === true? <LoginHome/> : <Login/>)
+            // return (isLogin === true? <LoginHome/> : <Login/>);
           })
           .catch(function (error) {
             console.log(error);
@@ -169,10 +175,29 @@ export default function Login() {
         SetInput1("");
         SetInput2("");
       } else alert("제대로 입력해주세요!");
-      
     },
     [input1, input2]
   );
+
+  const sendToken = () => {
+    axios.get('/api/auth/', {
+      headers: { Authorization: tokenData },
+    })
+    
+    .then(data => {
+      localStorage.setItem('X-AUTH-TOKEN', data.access_token);
+      setToken(localStorage.getItem('X-AUTH-TOKEN'));
+    })
+    .then(navigate('/'))
+    .catch(e=>{
+      console.error(e);
+    });
+  };
+  useEffect(() => {
+    if (code) {
+      onClick();
+    }
+  },[code]);
 
   // const onClick = async ()=>{
   //   if (input1 && input2) {
@@ -189,6 +214,7 @@ export default function Login() {
   //     }
   //   }
   // };
+  
   return (
     <Screen className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
@@ -216,7 +242,7 @@ export default function Login() {
               />
             </div>
             <Border2 className="fadein" />
-            <LoginBtn disabled={loading} type="submit" className="fadein" onClick={onClick}>
+            <LoginBtn type="submit" className="fadein" onClick={onClick}>
               Login
             </LoginBtn>
 
