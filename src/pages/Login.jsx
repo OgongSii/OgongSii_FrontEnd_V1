@@ -2,8 +2,8 @@ import { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import "../App.css";
-import { tokenState } from '../atom/TokenState';
-import { textState } from '../atom/TextState';
+import { tokenState } from "../atom/TokenState";
+import { textState } from "../atom/TextState";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
@@ -45,6 +45,7 @@ const IdDesign = styled.input`
   border: none;
   position: relative;
   left: 170px;
+  top:20px;
   margin: 70px 0 15px 0;
   font-family: "work sans";
   width: 300px;
@@ -63,6 +64,7 @@ const Border1 = styled.div`
   width: 55%;
   position: relative;
   left: 150px;
+  bottom:50px;
 `;
 
 const Border2 = styled.div`
@@ -70,6 +72,7 @@ const Border2 = styled.div`
   width: 55%;
   position: relative;
   left: 150px;
+  bottom:50px;
 `;
 const PasswordDesign = styled.input`
   font-family: "work sans";
@@ -81,6 +84,7 @@ const PasswordDesign = styled.input`
   left: 170px;
   width: 300px;
   font-size: 18px;
+  bottom:50px;
   &::-webkit-input-placeholder {
     opacity: 1;
     transition: opacity 0.25s ease-out;
@@ -99,7 +103,7 @@ const LoginBtn = styled.button`
   color: black;
   font-size: 1.1rem;
   padding-bottom: 1.5rem;
-  margin-top: 70px;
+  margin-top: 20px;
   padding-top: 25px;
   align-items: center;
   justify-content: center;
@@ -110,27 +114,42 @@ const LoginBtn = styled.button`
   background-color: #cc99ff;
 `;
 const Screen = styled.div`
-   @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
-}
+  }
 `;
 
 const NotLogin = styled.div`
-  margin-top:30px;
-  text-align:center;
+  margin-top: 30px;
+  text-align: center;
+`;
+const IdBtn= styled.button`
+  border:1px solid black;
+  width:12%;
+  padding: 8px 20px;
+  position: relative;
+  left:143px;
+  bottom:40px;
+  background-color:#cc99ff;
+  border-radius:0.5rem;
+  border:none;
+  transition: opacity 0.25s ease-out;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 export default function Login() {
   let params = new URLSearchParams(document.location.search);
-  let code = params.get('code');
-  
-  const [input1, SetInput1] =  useRecoilState(textState);
+  let code = params.get("code");
+
+  const [input1, SetInput1] = useRecoilState(textState);
   //const [input2, SetInput2] =  useRecoilState(textState);
   //const [input1, SetInput1] =  useState('');
-  const [input2, SetInput2] =  useState('');
+  const [input2, SetInput2] = useState("");
   const navigate = useNavigate();
-  const [tokenData, setTokenData] = useState('');
+  const [tokenData, setTokenData] = useState("");
   const [token, setToken] = useRecoilState(tokenState);
 
   const Id_onchange = useCallback(
@@ -154,26 +173,26 @@ export default function Login() {
           password: input2,
         };
         axios
-          .post("/api/auth/login", data,{
+          .post("/api/auth/login", data, {
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
           })
           .then(function (response) {
             console.log(response);
             if (response.data) {
-              localStorage.setItem('X-AUTH-TOKEN', response.data);
+              localStorage.setItem("X-AUTH-TOKEN", response.data);
               console.log(response.data);
-              setTokenData(localStorage.setItem('X-AUTH-TOKEN', response.data));
-              setToken(localStorage.getItem('X-AUTH-TOKEN'));
+              setTokenData(localStorage.setItem("X-AUTH-TOKEN", response.data));
+              setToken(localStorage.getItem("X-AUTH-TOKEN"));
               //sendToken();
             }
             // return (isLogin === true? <LoginHome/> : <Login/>);
           })
-          .then(navigate('/'))
+          .then(navigate("/"))
           .catch(function (error) {
             console.log(error);
-            alert('ㅄㅋ');
+            alert("ㅄㅋ");
           });
         SetInput1("");
         SetInput2("");
@@ -185,7 +204,7 @@ export default function Login() {
     if (code) {
       onClick();
     }
-  },[code]);
+  }, [code]);
 
   // const onClick = async ()=>{
   //   if (input1 && input2) {
@@ -202,7 +221,7 @@ export default function Login() {
   //     }
   //   }
   // };
-  
+
   return (
     <Screen className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
@@ -218,6 +237,7 @@ export default function Login() {
                 value={input1}
                 onChange={Id_onchange}
               />
+               <IdBtn className="fadein">중복</IdBtn>
             </div>
             <Border1 className="fadein" />
             <div className="fadein">
@@ -233,11 +253,8 @@ export default function Login() {
             <LoginBtn type="submit" className="fadein" onClick={onClick}>
               Login
             </LoginBtn>
-
             <NotLogin className="fadein">
-              <a href='./signup'>
-                회원가입
-              </a>
+              <a href="./signup">회원가입</a>
             </NotLogin>
           </IdPass>
         </WhiteBar>

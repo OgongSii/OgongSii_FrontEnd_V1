@@ -28,19 +28,17 @@ export default function Home(){
                 <div className="header">
                     <Nav>
                         <Ul>
-                            <Li>
-                                <Link to='./timer' className="line" target='_blank'>타이머</Link>
-                            </Li>
-                            <Li>   
-                                <Link to='./rank' className="line">랭킹</Link>
-                            </Li>
                             {token ? (
-                                <Li><Link onClick={logoutToken} className="line">로그아웃</Link></Li>
+                                <>
+                                    <Li><Link to='./timer' className="line" target='_blank'>타이머</Link></Li>
+                                    <Li><Link to='./rank' className="line">랭킹</Link></Li>
+                                    <Li><Link onClick={logoutToken} className="line">로그아웃</Link></Li>
+                                </>
                             ) : (
                                 <>
-                                <Li><Link to='./login' className="line">로그인</Link></Li>
-                                <Li><Link to='./signup' className="line">회원가입</Link></Li>
-                            </>
+                                    <Li><Link to='./login' className="line">로그인</Link></Li>
+                                    <Li><Link to='./signup' className="line">회원가입</Link></Li>
+                                </>
                             )}
                         </Ul>
                     </Nav>

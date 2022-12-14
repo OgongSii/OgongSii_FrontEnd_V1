@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-axios.defaults.baseURL = "http://10.80.163.83:8080/";
+axios.defaults.baseURL = "http://10.80.163.90:8080/";
 axios.defaults.withCredentials = true;
 
 
