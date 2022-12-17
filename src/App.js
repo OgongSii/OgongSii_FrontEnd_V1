@@ -6,7 +6,7 @@ import Ranking from './pages/Ranking';
 import Error from './pages/Error';
 import Home from './Home';
 import SignUp from './pages/SignUp';
-import Main from './Main';
+import Main from './Main.jsx';
 function App() {
   return (
     <div>

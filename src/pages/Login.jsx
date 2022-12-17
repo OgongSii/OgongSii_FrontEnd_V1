@@ -27,6 +27,17 @@ const WhiteBar = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  @media screen  and (max-width:768px){
+    width: 470px;
+    height: 600px;
+  }
+
+  @media screen  and (max-width:480px){
+    width: 410px;
+    height: 600px;
+    position:relative;
+    left:1px;
+  }
 `;
 const Title = styled.div`
   font-weight: bold;
@@ -35,6 +46,13 @@ const Title = styled.div`
   position: relative;
   font-family: "work sans";
   left: 245px;
+  @media screen  and (max-width:768px){
+    left:170px;
+  }
+
+  @media screen  and (max-width:480px){
+    left:130px;
+  }
 `;
 const IdPass = styled.div`
   margin: 50px auto;
@@ -45,8 +63,8 @@ const IdDesign = styled.input`
   border: none;
   position: relative;
   left: 170px;
-  top:20px;
-  margin: 70px 0 15px 0;
+  bottom:50px;
+  margin: 110px 0 15px 0;
   font-family: "work sans";
   width: 300px;
   font-size: 18px;
@@ -58,6 +76,17 @@ const IdDesign = styled.input`
   &:focus::-webkit-input-placeholder {
     opacity: 0;
   }
+  @media screen  and (max-width:768px){
+    left:120px;
+    bottom:20px;
+    margin: 100px 0 0px 0;
+  }
+
+  @media screen  and (max-width:480px){
+    left:90px;
+    bottom:40px;
+    margin: 120px 0 0px 0;
+  }
 `;
 const Border1 = styled.div`
   border-bottom: 3px solid #cc99ff;
@@ -65,6 +94,15 @@ const Border1 = styled.div`
   position: relative;
   left: 150px;
   bottom:50px;
+  @media screen  and (max-width:768px){
+    bottom:5px;
+    left:120px;
+  }
+
+  @media screen  and (max-width:480px){
+    left:90px;
+    bottom:20px;
+  }
 `;
 
 const Border2 = styled.div`
@@ -73,6 +111,15 @@ const Border2 = styled.div`
   position: relative;
   left: 150px;
   bottom:50px;
+  @media screen  and (max-width:768px){
+    left:120px;
+    bottom:40px;
+  }
+
+  @media screen  and (max-width:480px){
+    left:90px;
+    bottom:10px;
+  }
 `;
 const PasswordDesign = styled.input`
   font-family: "work sans";
@@ -93,6 +140,16 @@ const PasswordDesign = styled.input`
   &:focus::-webkit-input-placeholder {
     opacity: 0;
   }
+  @media screen  and (max-width:768px){
+    left:120px;
+    margin: 100px 0 15px 0;
+  }
+
+  @media screen  and (max-width:480px){
+    left:90px;
+    bottom:10px;
+    margin: 30px 0 15px 0;
+  }
 `;
 
 const LoginBtn = styled.button`
@@ -112,32 +169,24 @@ const LoginBtn = styled.button`
   font-family: "work sans";
   background-repeat: no-repeat;
   background-color: #cc99ff;
-`;
-const Screen = styled.div`
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  @media screen  and (max-width:768px){
+    top:10px;
+  }
+
+  @media screen  and (max-width:480px){
+    top:30px;
   }
 `;
 
 const NotLogin = styled.div`
   margin-top: 30px;
   text-align: center;
-`;
-const IdBtn= styled.button`
-  border:1px solid black;
-  width:12%;
-  padding: 8px 20px;
-  position: relative;
-  left:143px;
-  bottom:40px;
-  background-color:#cc99ff;
-  border-radius:0.5rem;
-  border:none;
-  transition: opacity 0.25s ease-out;
-  &:hover {
-    opacity: 0.8;
+  @media screen  and (max-width:768px){
+    margin-top:40px;
+  }
+
+  @media screen  and (max-width:480px){
+    margin-top:60px;
   }
 `;
 export default function Login() {
@@ -223,7 +272,7 @@ export default function Login() {
   // };
 
   return (
-    <Screen className="wrap">
+    <div className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
       <Bg>
         <WhiteBar className="fadein">
@@ -237,7 +286,6 @@ export default function Login() {
                 value={input1}
                 onChange={Id_onchange}
               />
-               <IdBtn className="fadein">중복</IdBtn>
             </div>
             <Border1 className="fadein" />
             <div className="fadein">
@@ -259,6 +307,6 @@ export default function Login() {
           </IdPass>
         </WhiteBar>
       </Bg>
-    </Screen>
+    </div>
   );
 }

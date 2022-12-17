@@ -23,6 +23,15 @@ const WhiteBar = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  @media screen  and (max-width:768px){
+    width: 550px;
+    height: 650px;
+  }
+  @media screen  and (max-width:480px){
+    width: 400px;
+    height: 650px;
+  }
+
 `;
 const Title = styled.div`
   font-weight: bold;
@@ -31,6 +40,14 @@ const Title = styled.div`
   position: relative;
   font-family: "work sans";
   left: 225px;
+  @media screen  and (max-width:768px){
+    left:200px;
+    font-size:40px;
+  }
+  @media screen  and (max-width:480px){
+    font-size:35px;
+    left:135px;
+  }
 `;
 const IdPass = styled.div`
   margin: 50px auto;
@@ -53,27 +70,64 @@ const IdDesign = styled.input`
   &:focus::-webkit-input-placeholder {
     opacity: 0;
   }
+  @media screen  and (max-width:768px){
+    left:100px;
+  }
+  @media screen  and (max-width:480px){
+    left:85px;
+  }
 `;
 const Border1 = styled.div`
   border-bottom: 3px solid #9999FF;
   width: 55%;
   position: relative;
   left: 150px;
+  bottom:60px;
+  @media screen  and (max-width:768px){
+    left:80px;
+    width: 70%;
+  }
+  @media screen  and (max-width:480px){
+    left:70px;
+  }
 `;
 
 const Border2 = styled.div`
   border-bottom: 3px solid #9999FF;
   width: 55%;
+  bottom:40px;
   position: relative;
   left: 150px;
+  @media screen  and (max-width:768px){
+    left:80px;
+    width: 70%;
+  }
+  @media screen  and (max-width:480px){
+    left:70px;
+  }
 `;
-const PasswordDesign = styled.input`
+const Border3 = styled.div`
+  border-bottom: 3px solid #9999FF;
+  width: 55%;
+  bottom:30px;
+  position: relative;
+  left: 150px;
+  @media screen  and (max-width:768px){
+    left:80px;
+    width: 70%;
+  }
+  @media screen  and (max-width:480px){
+    left:70px;
+  }
+`;
+const PasswordDesign1 = styled.input`
   font-family: "work sans";
   color: black;
   outline: none;
   margin: 50px 0 15px 0;
   border: none;
   position: relative;
+  bottom:50px;
   left: 170px;
   width: 300px;
   font-size: 18px;
@@ -85,7 +139,40 @@ const PasswordDesign = styled.input`
   &:focus::-webkit-input-placeholder {
     opacity: 0;
   }
+  @media screen  and (max-width:768px){
+    left:100px;
+  }
+  @media screen  and (max-width:480px){
+    left:85px;
+  }
 `;
+const PasswordDesign2 = styled.input`
+  font-family: "work sans";
+  color: black;
+  outline: none;
+  margin: 50px 0 15px 0;
+  border: none;
+  position: relative;
+  bottom:40px;
+  left: 170px;
+  width: 300px;
+  font-size: 18px;
+  &::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+  }
+  &:hover::-webkit-input-placeholder,
+  &:focus::-webkit-input-placeholder {
+    opacity: 0;
+  }
+  @media screen  and (max-width:768px){
+    left:100px;
+  }
+  @media screen  and (max-width:480px){
+    left:85px;
+  }
+`;
+
 
 const JoinBtn = styled.button`
   transition: opacity 0.25s ease-out;
@@ -103,11 +190,31 @@ const JoinBtn = styled.button`
   width: 300px;
   font-family: "work sans";
   background-repeat: no-repeat;
+  bottom:40px;
   background-color:#9999FF;
+  @media screen  and (max-width:768px){
+    margin-top:80px;
+  }
 `;
 
-const Screen = styled.div`
-  
+const IdBtn=styled.button`
+  width:12%;
+  padding:8px;
+  position: relative;
+  left:150px;
+  bottom:60px;
+  background-color:#9999FF;
+  border-radius:0.5rem;
+  &:hover{
+    opacity: 0.8;
+  }
+  @media screen  and (max-width:768px){
+    left:155px;
+    padding:8px;
+  }
+  @media screen  and (max-width:480px){
+    left:125px;
+  }
 `;
 export default function SignUp() {
   const [input1, SetInput1] = useState("");
@@ -134,36 +241,6 @@ export default function SignUp() {
     },
     [input3]
   );
-
-  // const onClick = useCallback(
-  //   (e) => {
-  //     if (input1 && input2 && input3) {
-  //       if (input2 === input3) {
-  //         let data = {
-  //           "name" : input1,
-  //           "password" : input2,
-  //         };
-  //         axios
-  //           // .post("/api/auth/signUp", JSON.stringify(data), {
-  //           //   headers: {
-  //           //     "Content-Type": `application/json`,
-  //           //   },
-  //           // })
-  //           .post("/api/auth/signUp", data)
-  //           .then(function (response) {
-  //             console.log(response);
-  //           })
-  //           .catch(function (error) {
-  //             console.log(error);
-  //           });
-  //       }
-  //     } else alert("제대로 입력해주세요!");
-  //     SetInput1("");
-  //     SetInput2("");
-  //     SetInput3("");
-  //   },
-  //   [input1, input2, input3]
-  // );
   const onClick = async()=>{
     if (input1 && input2 && input3) {
       if (input2 === input3) {
@@ -186,7 +263,7 @@ export default function SignUp() {
     }
   };
   return (
-    <Screen>
+    <div>
       <style>{'body { background-color: #CCCCFF; }'}</style>
       <Bg>
         <WhiteBar className="fadein">
@@ -200,10 +277,11 @@ export default function SignUp() {
                 value={input1}
                 onChange={Id_onchange}
               />
+              <IdBtn>중복</IdBtn>
             </div>
             <Border1 className="fadein"/>
             <div className="fadein">
-              <PasswordDesign
+              <PasswordDesign1
                 type="password"
                 placeholder="Enter your password"
                 name="password"
@@ -213,7 +291,7 @@ export default function SignUp() {
             </div>
             <Border2 className="fadein"/>
             <div className="fadein">
-              <PasswordDesign
+              <PasswordDesign2
                 type="password"
                 placeholder="Check your password"
                 name="password_check"
@@ -221,13 +299,13 @@ export default function SignUp() {
                 onChange={Password_onchange_check}
               />
             </div>
-            <Border2 className="fadein"/>
+            <Border3 className="fadein"/>
             <JoinBtn type="submit" onClick={onClick} className="fadein">
               Sign In 
             </JoinBtn>
           </IdPass>
         </WhiteBar>
       </Bg>
-    </Screen>
+    </div>
   );
 }

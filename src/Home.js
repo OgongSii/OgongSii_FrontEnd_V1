@@ -4,17 +4,20 @@ import styled from "styled-components";
 import './App.css';
 import { tokenState } from "./atom/TokenState";
 const Li=styled.li`
-    list-style-type : none;
-    margin-right:50px;
-`;
-const Nav=styled.nav`
     
 `;
+const Nav=styled.nav`
+    ul{
+      display: flex;
+      list-style:none;
+
+      li+li{
+        margin-left: 30px;
+      }
+  }
+`;
 const Ul=styled.ul`
-    list-style: none;
-    display:flex;
-    position:relative;
-    top:20px;
+    
 `;
 export default function Home(){
     const [token, setToken] = useRecoilState(tokenState);
@@ -24,8 +27,12 @@ export default function Home(){
     };    
     return(
         <RecoilRoot>
-            <div>
-                <div className="header">
+            <header className="header">
+                <div className="contents">
+                    <div>
+                        로고
+                    </div>
+
                     <Nav>
                         <Ul>
                             {token ? (
@@ -43,7 +50,7 @@ export default function Home(){
                         </Ul>
                     </Nav>
                 </div>
-            </div>
+            </header>
         </RecoilRoot>
     );
 }
