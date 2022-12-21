@@ -200,14 +200,12 @@ export default function Login() {
   const navigate = useNavigate();
   const [tokenData, setTokenData] = useState("");
   const [token, setToken] = useRecoilState(tokenState);
-
   const Id_onchange = useCallback(
     (e) => {
       SetInput1(e.target.value);
     },
     [input1]
   );
-
   const Password_onchange = useCallback(
     (e) => {
       SetInput2(e.target.value);
@@ -249,27 +247,12 @@ export default function Login() {
     },
     [input1, input2]
   );
+  
   useEffect(() => {
     if (code) {
       onClick();
     }
   }, [code]);
-
-  // const onClick = async ()=>{
-  //   if (input1 && input2) {
-  //     try{
-  //       let data = {
-  //         name: input1,
-  //         password: input2,
-  //       };
-  //       const response=await axios.post("/api/auth/login",data);
-  //       console.log(response.data);
-  //     }
-  //     catch(e){
-  //       console.log(e);
-  //     }
-  //   }
-  // };
 
   return (
     <div className="wrap">
@@ -282,6 +265,7 @@ export default function Login() {
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
+                maxLength={15}
                 name="name"
                 value={input1}
                 onChange={Id_onchange}
@@ -292,6 +276,7 @@ export default function Login() {
               <PasswordDesign
                 type="password"
                 placeholder="Enter your password"
+                maxLength={15}
                 name="password"
                 value={input2}
                 onChange={Password_onchange}

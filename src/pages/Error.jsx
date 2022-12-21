@@ -17,7 +17,7 @@ export default function Error(){
         <div>
             <FourZeroFour>
                 <Ha>404</Ha>
-                <Explicate>페이지 제대로 쳐라잉!!</Explicate>
+                <Explicate>페이지 제대로 치셈ㅋ</Explicate>
             </FourZeroFour>
         </div>
     )

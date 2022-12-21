@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef } from "react";
+import { useCallback, useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import '../App.css';
@@ -273,6 +273,7 @@ export default function SignUp() {
               <IdDesign
                 type="text"
                 placeholder="Enter your ID"
+                maxLength={15}
                 name="name"
                 value={input1}
                 onChange={Id_onchange}
@@ -284,6 +285,7 @@ export default function SignUp() {
               <PasswordDesign1
                 type="password"
                 placeholder="Enter your password"
+                maxLength={15}
                 name="password"
                 value={input2}
                 onChange={Password_onchange}
@@ -296,6 +298,7 @@ export default function SignUp() {
                 placeholder="Check your password"
                 name="password_check"
                 value={input3}
+                maxLength={15}
                 onChange={Password_onchange_check}
               />
             </div>
