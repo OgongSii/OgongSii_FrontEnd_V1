@@ -266,6 +266,7 @@ export default function SignUp() {
     <div>
       <style>{'body { background-color: #CCCCFF; }'}</style>
       <Bg>
+        <table align="center">
         <WhiteBar className="fadein">
           <IdPass>
             <Title className="fadein">회원가입</Title>
@@ -308,6 +309,7 @@ export default function SignUp() {
             </JoinBtn>
           </IdPass>
         </WhiteBar>
+        </table>
       </Bg>
     </div>
   );

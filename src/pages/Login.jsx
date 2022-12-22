@@ -258,6 +258,7 @@ export default function Login() {
     <div className="wrap">
       <style>{"body { background-color: #E5CCFF; }"}</style>
       <Bg>
+        <table align="center">
         <WhiteBar className="fadein">
           <IdPass>
             <Title className="fadein">로그인</Title>
@@ -291,6 +292,7 @@ export default function Login() {
             </NotLogin>
           </IdPass>
         </WhiteBar>
+        </table>
       </Bg>
     </div>
   );
